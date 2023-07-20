@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "271166883091",
+    "project_id": "avitechchoco",
+    "storage_bucket": "avitechchoco.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271166883091:android:0acfcedc79e6f94cc806e6",
+        "android_client_info": {
+          "package_name": "com.example.avitch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271166883091-hkbbhe1blc6cq2i1m1sg3p99qjfeu254.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcnA7V_2Elu65zGQWYPwFAYHXR3O-XUm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271166883091-hkbbhe1blc6cq2i1m1sg3p99qjfeu254.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271166883091:android:7472107e5c036546c806e6",
+        "android_client_info": {
+          "package_name": "com.example.avitech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271166883091-hkbbhe1blc6cq2i1m1sg3p99qjfeu254.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcnA7V_2Elu65zGQWYPwFAYHXR3O-XUm0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271166883091-hkbbhe1blc6cq2i1m1sg3p99qjfeu254.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
