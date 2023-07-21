@@ -62,7 +62,7 @@ class AlimentationPPage extends StatelessWidget {
                   fit: BoxFit.contain,
                 ),
               ),
-              height: 170,
+              height: 160,
             ),
           ),
           elevation: 0,
@@ -119,6 +119,7 @@ class AlimentationPPage extends StatelessWidget {
                 margin: EdgeInsets.only(
                   top: 40,
                   left: 30,
+                  right: 30,
                 ),
                 child: Column(
                   children: [
@@ -163,6 +164,7 @@ class AlimentationPPage extends StatelessWidget {
                 margin: EdgeInsets.only(
                   top: 20,
                   left: 30,
+                  right: 30,
                 ),
                 child: Column(
                   children: [
@@ -207,6 +209,7 @@ class AlimentationPPage extends StatelessWidget {
                 margin: EdgeInsets.only(
                   top: 20,
                   left: 30,
+                  right: 30,
                 ),
                 child: Column(
                   children: [
@@ -248,6 +251,7 @@ class AlimentationPPage extends StatelessWidget {
               margin: EdgeInsets.only(
                 top: 25,
                 left: 30,
+                right: 30,
               ),
               child: Column(
                 children: [
@@ -277,6 +281,7 @@ class AlimentationPPage extends StatelessWidget {
                 margin: EdgeInsets.only(
                   top: 20,
                   left: 30,
+                  right: 30,
                 ),
                 child: Column(
                   children: [
@@ -320,6 +325,7 @@ class AlimentationPPage extends StatelessWidget {
                 margin: EdgeInsets.only(
                   top: 20,
                   left: 30,
+                  right: 30,
                 ),
                 child: Column(
                   children: [
@@ -364,6 +370,7 @@ class AlimentationPPage extends StatelessWidget {
                 margin: EdgeInsets.only(
                   top: 20,
                   left: 30,
+                  right: 30,
                 ),
                 child: Column(
                   children: [

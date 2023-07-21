@@ -8,10 +8,7 @@ class HeaderSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AppColor.primaryColor,
-      padding: EdgeInsets.only(
-        left: 25,
-        right: 25,
-      ),
+      padding: EdgeInsets.only(),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -39,8 +36,8 @@ class HeaderSection extends StatelessWidget {
             ],
           ),
           Container(
-            width: 100,
-            height: 150,
+            width: 90,
+            height: 140,
             child: Image.asset(
               'img/1.png',
               fit: BoxFit.cover,

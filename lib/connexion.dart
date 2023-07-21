@@ -158,18 +158,6 @@ class ConnexionPage extends StatelessWidget {
                 child: Container(
                   margin: EdgeInsets.only(
                     top: 20,
-                    left: 30,
-                    right: 30,
-                  ),
-                  color: Colors.black,
-                  height: 1,
-                ),
-              ),
-              DelayedAnimation(
-                delay: 2700,
-                child: Container(
-                  margin: EdgeInsets.only(
-                    top: 20,
                   ),
                   child: Container(
                     child: ElevatedButton(

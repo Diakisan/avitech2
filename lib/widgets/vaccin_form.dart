@@ -27,6 +27,7 @@ class _VaccinFormState extends State<VaccinForm> {
           margin: const EdgeInsets.only(
             top: 30,
             left: 10,
+            right: 10,
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),

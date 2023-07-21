@@ -65,7 +65,7 @@ class _InfosPageState extends State<InfosPage> {
                   fit: BoxFit.contain,
                 ),
               ),
-              height: 170,
+              height: 160,
             ),
           ),
           elevation: 0,

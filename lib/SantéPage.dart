@@ -30,7 +30,7 @@ class _SantePageState extends State<SantePage> {
                   fit: BoxFit.contain,
                 ),
               ),
-              height: 170,
+              height: 160,
             ),
           ),
           elevation: 0,
@@ -88,6 +88,7 @@ class _SantePageState extends State<SantePage> {
                     width: 350,
                     margin: const EdgeInsets.only(
                       left: 30,
+                      right: 30,
                     ),
                     child: Column(
                       children: [

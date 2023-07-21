@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/app_color.dart';
+
 const a_vert = const Color(0xFF2FB35A);
 const a_orange = const Color(0xFFFFAA00);
 
@@ -9,7 +11,8 @@ class SearchSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.28,
+      height: MediaQuery.of(context).size.height * 0.29,
+      color: AppColor.primaryColor,
       child: Column(
         children: <Widget>[
           Flexible(

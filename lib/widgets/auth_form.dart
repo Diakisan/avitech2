@@ -67,18 +67,8 @@ class _AuthFormState extends State<AuthForm> {
           backgroundColor: AppColor.primaryColor,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(75),
-                  bottomRight: Radius.circular(75))),
-          leading: IconButton(
-            icon: Icon(
-              Icons.close,
-              color: Colors.white,
-              size: 30,
-            ),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
+            bottomLeft: Radius.circular(75),
+          )),
         ),
       ),
       body: SingleChildScrollView(
@@ -232,7 +222,7 @@ class _AuthFormState extends State<AuthForm> {
                           style: ElevatedButton.styleFrom(
                             backgroundColor: a_vert,
                             padding:
-                                const EdgeInsets.fromLTRB(129, 15, 129, 15),
+                                const EdgeInsets.fromLTRB(100, 15, 100, 15),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -241,25 +231,35 @@ class _AuthFormState extends State<AuthForm> {
                         ),
                       if (!widget.isLoading)
                         Container(
-                          margin: const EdgeInsets.only(
-                            top: 20,
-                          ),
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: a_orange,
-                              padding:
-                                  const EdgeInsets.fromLTRB(35, 15, 35, 15),
+                          child: Container(
+                            margin: EdgeInsets.only(
+                              top: 20,
+                              left: 10,
+                              right: 10,
                             ),
-                            onPressed: () {
-                              setState(() {
-                                _isLogin = !_isLogin;
-                              });
-                            },
-                            child: Text(_isLogin
-                                ? 'Créer un nouveau compte'
-                                : 'Vous avez déjà un compte'),
+                            color: Colors.black,
+                            height: 1,
                           ),
                         ),
+                      Container(
+                        margin: const EdgeInsets.only(
+                          top: 20,
+                        ),
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: a_orange,
+                            padding: const EdgeInsets.fromLTRB(35, 15, 35, 15),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isLogin = !_isLogin;
+                            });
+                          },
+                          child: Text(_isLogin
+                              ? 'Créer un nouveau compte'
+                              : 'Vous avez déjà un compte'),
+                        ),
+                      ),
                     ],
                   ),
                 ),

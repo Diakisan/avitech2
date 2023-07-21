@@ -21,7 +21,7 @@ class AlimentPage extends StatelessWidget {
                   fit: BoxFit.contain,
                 ),
               ),
-              height: 170,
+              height: 160,
             ),
           ),
           elevation: 0,
@@ -79,6 +79,7 @@ class AlimentPage extends StatelessWidget {
                     width: 350,
                     margin: EdgeInsets.only(
                       left: 30,
+                      right: 30,
                     ),
                     child: Column(
                       children: [
@@ -120,12 +121,13 @@ class AlimentPage extends StatelessWidget {
             ),
             //N production
             Container(
-              alignment: Alignment.centerLeft,
+              alignment: Alignment.center,
               child: Container(
                 width: 350,
                 margin: EdgeInsets.only(
                   top: 20,
                   left: 30,
+                  right: 30,
                 ),
                 child: Column(
                   children: [
@@ -170,6 +172,7 @@ class AlimentPage extends StatelessWidget {
                 margin: EdgeInsets.only(
                   top: 25,
                   left: 30,
+                  right: 30,
                 ),
                 child: Column(
                   children: [

@@ -63,7 +63,7 @@ class DemarragePage extends StatelessWidget {
                   fit: BoxFit.contain,
                 ),
               ),
-              height: 170,
+              height: 160,
             ),
           ),
           elevation: 0,
@@ -120,6 +120,7 @@ class DemarragePage extends StatelessWidget {
                 margin: EdgeInsets.only(
                   top: 30,
                   left: 30,
+                  right: 30,
                 ),
                 child: TextField(
                   decoration: InputDecoration(
@@ -142,6 +143,7 @@ class DemarragePage extends StatelessWidget {
                 margin: EdgeInsets.only(
                   top: 25,
                   left: 30,
+                  right: 30,
                 ),
                 child: TextField(
                   keyboardType: TextInputType.number,
@@ -181,14 +183,7 @@ class DemarragePage extends StatelessWidget {
               ),
             ),
             //souche
-            Container(
-              alignment: Alignment.centerLeft,
-              margin: EdgeInsets.only(
-                top: 25,
-                left: 30,
-              ),
-              child: DropDownDemo(),
-            ),
+
             //date
             Container(
               alignment: Alignment.centerLeft,
@@ -225,6 +220,7 @@ class DemarragePage extends StatelessWidget {
                 margin: EdgeInsets.only(
                   top: 30,
                   left: 30,
+                  right: 30,
                 ),
                 child: TextField(
                   decoration: InputDecoration(
@@ -247,6 +243,7 @@ class DemarragePage extends StatelessWidget {
                 margin: EdgeInsets.only(
                   top: 30,
                   left: 30,
+                  right: 30,
                 ),
                 child: TextField(
                   decoration: InputDecoration(
