@@ -27,7 +27,7 @@ class HeaderSection extends StatelessWidget {
                 height: 5,
               ),
               Text(
-                " Etat du cycle de la bande: 01",
+                " Etat du cycle de la bande: 07",
                 style: TextStyle(
                   fontSize: 19,
                   color: Colors.white,

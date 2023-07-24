@@ -1,9 +1,22 @@
 import 'package:avitch/alimentP_page.dart';
 import 'package:avitch/theme/app_color.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 
-class AlimentPage extends StatelessWidget {
+class AlimentPage extends StatefulWidget {
   const AlimentPage({Key? key}) : super(key: key);
+
+  @override
+  State<AlimentPage> createState() => _AlimentPageState();
+}
+
+class _AlimentPageState extends State<AlimentPage> {
+  TextEditingController _arrivage_A = TextEditingController();
+  TextEditingController _productioA = TextEditingController();
+  TextEditingController _quantiteA = TextEditingController();
+  TextEditingController _date_A = TextEditingController();
+  var db = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +114,7 @@ class AlimentPage extends StatelessWidget {
                         ),
                         Container(
                           child: TextField(
+                            controller: _arrivage_A,
                             decoration: InputDecoration(
                               labelText: 'N°arrivage',
                               hintText: "N°arrivage",
@@ -148,6 +162,7 @@ class AlimentPage extends StatelessWidget {
                     ),
                     Container(
                       child: TextField(
+                        controller: _productioA,
                         decoration: InputDecoration(
                           labelText: 'Numero de production',
                           hintText: "N°Production",
@@ -161,6 +176,37 @@ class AlimentPage extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+              ),
+            ),
+            Container(
+              alignment: Alignment.centerLeft,
+              child: Container(
+                width: 350,
+                margin: EdgeInsets.only(
+                  top: 25,
+                  left: 30,
+                  right: 30,
+                ),
+                child: DateTimeFormField(
+                  decoration: const InputDecoration(
+                    hintStyle: TextStyle(color: Colors.black45),
+                    errorStyle: TextStyle(color: Colors.redAccent),
+                    border: OutlineInputBorder(),
+                    suffixIcon: Icon(Icons.event_note),
+                    labelText: ' Date ',
+                  ),
+                  mode: DateTimeFieldPickerMode.date,
+                  autovalidateMode: AutovalidateMode.always,
+                  validator: (e) => (e?.day ?? 0) == 1
+                      ? 'Entrer votre date de naissance'
+                      : null,
+                  onDateSelected: (DateTime value) {
+                    setState(() {
+                      _date_A.text = value.toString();
+                    });
+                    print(value);
+                  },
                 ),
               ),
             ),
@@ -194,6 +240,7 @@ class AlimentPage extends StatelessWidget {
                     Container(
                       child: TextField(
                         keyboardType: TextInputType.number,
+                        controller: _quantiteA,
                         decoration: InputDecoration(
                           labelText: 'Quantité',
                           hintText: "Quantité",
@@ -233,7 +280,53 @@ class AlimentPage extends StatelessWidget {
                           ],
                         ),
                         onPressed: () {
-                          ;
+                          db.collection("consomation_poulet").add({
+                            "arrivage_conso": _arrivage_A.text,
+                            "production_conso": _productioA.text,
+                            "quantité_conso": _quantiteA.text,
+                            "date_conso": _date_A.text,
+                          }).then((value) {
+                            showDialog(
+                                barrierDismissible: true,
+                                context: context,
+                                builder: (_) {
+                                  return Dialog(
+                                    backgroundColor: Colors.white,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 10),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          // The loading indicator
+                                          const Icon(
+                                            Icons.check_circle,
+                                            size: 100,
+                                          ),
+                                          const SizedBox(
+                                            height: 15,
+                                          ),
+                                          // Some text
+                                          Text("Enregistré avec succés"),
+                                          const SizedBox(
+                                            height: 15,
+                                          ),
+                                          ElevatedButton(
+                                              onPressed: () {
+                                                _arrivage_A.text = "";
+                                                _productioA.text = "";
+                                                _quantiteA.text = "";
+                                                _date_A.text = "";
+
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text("ok"))
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                });
+                          });
                         },
                       ),
                     ),

@@ -18,8 +18,8 @@ class SearchSection extends StatelessWidget {
           Flexible(
             child: Row(
               children: <Widget>[
-                _buildStaCard("Effectif actuelle :", '1800', Colors.orange),
-                _buildStaCard("Mortalité :", '200', Colors.orange),
+                _buildStaCard("Effectif actuelle :", '2000', Colors.orange),
+                _buildStaCard("Mortalité :", '00', Colors.orange),
               ],
             ),
           ),
@@ -28,7 +28,7 @@ class SearchSection extends StatelessWidget {
               children: <Widget>[
                 _buildStaCard("Effectif de départ :", '2000', Colors.orange),
                 _buildStaCard("Vendu :", '0', Colors.orange),
-                _buildStaCard("Souche:", 'chair', Colors.orange),
+                _buildStaCard("Souche:", 'Local', Colors.orange),
               ],
             ),
           ),

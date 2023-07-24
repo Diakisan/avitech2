@@ -1,4 +1,5 @@
 import 'package:avitch/theme/app_color.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 final List<String> items = <String>[
@@ -43,8 +44,21 @@ class _DropDownDemoState extends State<DropDownDemo> {
   }
 }
 
-class AlimentationPPage extends StatelessWidget {
+class AlimentationPPage extends StatefulWidget {
   const AlimentationPPage({Key? key}) : super(key: key);
+
+  @override
+  State<AlimentationPPage> createState() => _AlimentationPPageState();
+}
+
+class _AlimentationPPageState extends State<AlimentationPPage> {
+  TextEditingController _Nproduction = TextEditingController();
+  TextEditingController _origine = TextEditingController();
+  TextEditingController _nature = TextEditingController();
+  TextEditingController _nonfourn = TextEditingController();
+  TextEditingController _coutproc = TextEditingController();
+  TextEditingController _quantite_p = TextEditingController();
+  var db = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -140,6 +154,7 @@ class AlimentationPPage extends StatelessWidget {
                     ),
                     Container(
                       child: TextField(
+                        controller: _Nproduction,
                         decoration: InputDecoration(
                           labelText: 'Numero de production',
                           hintText: "N°Production",
@@ -185,6 +200,7 @@ class AlimentationPPage extends StatelessWidget {
                     ),
                     Container(
                       child: TextField(
+                        controller: _origine,
                         decoration: InputDecoration(
                           labelText: 'Origine',
                           hintText: "Originne",
@@ -230,6 +246,7 @@ class AlimentationPPage extends StatelessWidget {
                     ),
                     Container(
                       child: TextField(
+                        controller: _nature,
                         decoration: InputDecoration(
                           labelText: 'Nature',
                           hintText: "Nature",
@@ -302,6 +319,7 @@ class AlimentationPPage extends StatelessWidget {
                     ),
                     Container(
                       child: TextField(
+                        controller: _Nproduction,
                         decoration: InputDecoration(
                           labelText: 'Nom du fournisseur',
                           hintText: "Nom du fournisseur",
@@ -346,6 +364,7 @@ class AlimentationPPage extends StatelessWidget {
                     ),
                     Container(
                       child: TextField(
+                        controller: _coutproc,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           labelText: 'Prix',
@@ -391,6 +410,7 @@ class AlimentationPPage extends StatelessWidget {
                     ),
                     Container(
                       child: TextField(
+                        controller: _quantite_p,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           labelText: 'Quantité',
@@ -430,7 +450,56 @@ class AlimentationPPage extends StatelessWidget {
                           ],
                         ),
                         onPressed: () {
-                          ;
+                          db.collection("Aliment_produit").add({
+                            "numero_de_production": _Nproduction.text,
+                            "origine_poulet": _origine.text,
+                            "nature": _nature.text,
+                            "nom fournisseur": _nonfourn.text,
+                            "cout production": _coutproc.text,
+                            "quantitté_p": _quantite_p.text,
+                          }).then((value) {
+                            showDialog(
+                                barrierDismissible: true,
+                                context: context,
+                                builder: (_) {
+                                  return Dialog(
+                                    backgroundColor: Colors.white,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 10),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          // The loading indicator
+                                          const Icon(
+                                            Icons.check_circle,
+                                            size: 100,
+                                          ),
+                                          const SizedBox(
+                                            height: 15,
+                                          ),
+                                          // Some text
+                                          Text("Enregistré avec succés"),
+                                          const SizedBox(
+                                            height: 15,
+                                          ),
+                                          ElevatedButton(
+                                              onPressed: () {
+                                                _Nproduction.text = "";
+                                                _origine.text = "";
+                                                _nature.text = "";
+                                                _nonfourn.text = "";
+                                                _coutproc.text = "";
+                                                _quantite_p.text = "";
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text("ok"))
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                });
+                          });
                         },
                       ),
                     ),

@@ -1,3 +1,4 @@
+import 'package:avitch/widgets/tab.dart';
 import 'package:flutter/material.dart';
 
 class MyListTile extends StatelessWidget {
@@ -31,6 +32,9 @@ class MyListTile extends StatelessWidget {
           color: Colors.grey[600],
         ),
       ),
+      children: [
+        tabcons(),
+      ],
     );
   }
 }

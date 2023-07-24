@@ -60,7 +60,7 @@ class _SantePageState extends State<SantePage> {
               ),
               alignment: Alignment.center,
               child: const Text(
-                "SANTE",
+                "PROTOCOLE VACCINATION",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 22,
@@ -72,65 +72,24 @@ class _SantePageState extends State<SantePage> {
               child: Container(
                 margin: const EdgeInsets.only(
                   top: 15,
-                  left: 40,
-                  right: 40,
+                  left: 38,
+                  right: 38,
                   bottom: 20,
                 ),
                 color: Colors.black,
                 height: 1,
               ),
             ),
-            Container(
-              alignment: Alignment.centerLeft,
-              child: Column(
-                children: [
-                  Container(
-                    width: 350,
-                    margin: const EdgeInsets.only(
-                      left: 30,
-                      right: 30,
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(
-                            top: 30,
-                            bottom: 10,
-                          ),
-                          alignment: Alignment.centerLeft,
-                          child: const Text(
-                            "Entrer le numéro de bande:",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          child: const TextField(
-                            decoration: InputDecoration(
-                              labelText: 'N°arrivage',
-                              hintText: "N°arrivage",
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5.0)),
-                                borderSide: BorderSide(
-                                    color: AppColor.grayColor, width: 2.0),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            VaccinForm(namevaccin: 'nana', deadline: '14'),
-            VaccinForm(namevaccin: 'nana', deadline: '14'),
-            VaccinForm(namevaccin: 'nana', deadline: '14'),
+            VaccinForm(namevaccin: 'Complexe vitamique', deadline: '1-5'),
+            VaccinForm(namevaccin: 'Antiboitique', deadline: '10-13'),
+            VaccinForm(
+                namevaccin: 'Vaccin inactivé contre le new castle',
+                deadline: '21'),
+            VaccinForm(
+                namevaccin: ' vaccin contre lavariole aviaire', deadline: '24'),
+            VaccinForm(namevaccin: 'Antiparasitaires internes', deadline: '60'),
+            VaccinForm(
+                namevaccin: 'rapple vaccination variole', deadline: '75'),
           ],
         ),
       ),

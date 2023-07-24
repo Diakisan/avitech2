@@ -1,4 +1,5 @@
 import 'package:avitch/theme/app_color.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class VaccinForm extends StatefulWidget {
@@ -17,6 +18,8 @@ class VaccinForm extends StatefulWidget {
 
 class _VaccinFormState extends State<VaccinForm> {
   bool? ischecked = false;
+  TextEditingController _prix_vaccin = TextEditingController();
+  var db = FirebaseFirestore.instance;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -43,17 +46,17 @@ class _VaccinFormState extends State<VaccinForm> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Vaccin : ${widget.namevaccin ?? ""}',
+                  'traitement: ${widget.namevaccin ?? ""}',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 22,
+                    fontSize: 20,
                   ),
                   textAlign: TextAlign.left,
                 ),
                 Align(
                   alignment: Alignment.topRight,
                   child: Text(
-                    'avant le  ${widget.deadline ?? ""}jours ',
+                    'Age  ${widget.deadline ?? ""}jours ',
                     style: TextStyle(
                       color: Colors.grey[800],
                       fontSize: 16,
@@ -88,6 +91,7 @@ class _VaccinFormState extends State<VaccinForm> {
                   ),
                 ),
                 TextField(
+                  controller: _prix_vaccin,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'Prix',
@@ -117,7 +121,46 @@ class _VaccinFormState extends State<VaccinForm> {
                         ],
                       ),
                       onPressed: () {
-                        ;
+                        db.collection("consomation_poulet").add({
+                          "prix du vaccin": _prix_vaccin.text,
+                        }).then((value) {
+                          showDialog(
+                              barrierDismissible: true,
+                              context: context,
+                              builder: (_) {
+                                return Dialog(
+                                  backgroundColor: Colors.white,
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        // The loading indicator
+                                        const Icon(
+                                          Icons.check_circle,
+                                          size: 100,
+                                        ),
+                                        const SizedBox(
+                                          height: 15,
+                                        ),
+                                        // Some text
+                                        Text("Enregistré avec succés"),
+                                        const SizedBox(
+                                          height: 15,
+                                        ),
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              _prix_vaccin.text = "";
+
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text("ok"))
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              });
+                        });
                       },
                     ),
                   ),

@@ -1,4 +1,5 @@
 import 'package:avitch/theme/app_color.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 
@@ -44,8 +45,21 @@ class _DropDownDemoState extends State<DropDownDemo> {
   }
 }
 
-class DemarragePage extends StatelessWidget {
+class DemarragePage extends StatefulWidget {
   const DemarragePage({Key? key}) : super(key: key);
+
+  @override
+  State<DemarragePage> createState() => _DemarragePageState();
+}
+
+class _DemarragePageState extends State<DemarragePage> {
+  TextEditingController _arivvage = TextEditingController();
+  TextEditingController _effectifD = TextEditingController();
+  TextEditingController _prixD = TextEditingController();
+  TextEditingController _nomfourD = TextEditingController();
+  TextEditingController _adrFourD = TextEditingController();
+  TextEditingController _date_D = TextEditingController();
+  var db = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -123,6 +137,7 @@ class DemarragePage extends StatelessWidget {
                   right: 30,
                 ),
                 child: TextField(
+                  controller: _arivvage,
                   decoration: InputDecoration(
                     labelText: 'N°arrivage',
                     hintText: "N°arrivage",
@@ -146,6 +161,7 @@ class DemarragePage extends StatelessWidget {
                   right: 30,
                 ),
                 child: TextField(
+                  controller: _effectifD,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'Effectif',
@@ -169,6 +185,7 @@ class DemarragePage extends StatelessWidget {
                   left: 30,
                 ),
                 child: TextField(
+                  controller: _prixD,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     labelText: 'Prix',
@@ -207,6 +224,9 @@ class DemarragePage extends StatelessWidget {
                       ? 'Entrer votre date de naissance'
                       : null,
                   onDateSelected: (DateTime value) {
+                    setState(() {
+                      _date_D.text = value.toString();
+                    });
                     print(value);
                   },
                 ),
@@ -223,6 +243,7 @@ class DemarragePage extends StatelessWidget {
                   right: 30,
                 ),
                 child: TextField(
+                  controller: _nomfourD,
                   decoration: InputDecoration(
                     labelText: 'Nom du fournisseur',
                     hintText: "NFournisseur",
@@ -246,6 +267,7 @@ class DemarragePage extends StatelessWidget {
                   right: 30,
                 ),
                 child: TextField(
+                  controller: _adrFourD,
                   decoration: InputDecoration(
                     labelText: 'Adresse du fournisseur',
                     hintText: "AFournisseur",
@@ -280,7 +302,56 @@ class DemarragePage extends StatelessWidget {
                           ],
                         ),
                         onPressed: () {
-                          ;
+                          db.collection("Demarrage_poulet").add({
+                            "date": _date_D.text,
+                            "arrivage": _arivvage.text,
+                            "effectif": _effectifD.text,
+                            "prix_demarage": _prixD.text,
+                            "nom_fournisseur": _nomfourD.text,
+                            "adresse_fournisseur": _adrFourD.text,
+                          }).then((value) {
+                            showDialog(
+                                barrierDismissible: true,
+                                context: context,
+                                builder: (_) {
+                                  return Dialog(
+                                    backgroundColor: Colors.white,
+                                    child: Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 10),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          // The loading indicator
+                                          const Icon(
+                                            Icons.check_circle,
+                                            size: 100,
+                                          ),
+                                          const SizedBox(
+                                            height: 15,
+                                          ),
+                                          // Some text
+                                          Text("Enregistré avec succés"),
+                                          const SizedBox(
+                                            height: 15,
+                                          ),
+                                          ElevatedButton(
+                                              onPressed: () {
+                                                _arivvage.text = "";
+                                                _effectifD.text = "";
+                                                _nomfourD.text = "";
+                                                _prixD.text = "";
+                                                _date_D.text = "";
+                                                _adrFourD.text = "";
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text("ok"))
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                });
+                          });
                         },
                       ),
                     ),
